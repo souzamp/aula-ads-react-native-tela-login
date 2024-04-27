@@ -1,17 +1,28 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Text, TouchableOpacity } from "react-native";
+import { View, TextInput, Text, TouchableOpacity, Alert } from "react-native";
+
+import { useNavigation } from "@react-navigation/native";
 
 import styles from "./style";
 
 export default function Form() {
+    const navigation = useNavigation();
 
     const [matricula, setMatricula] = useState(null)
     const [senha, setSenha] = useState(null)
-    const [textButton, setTextButton] = useState("Entrar")
+    const [textButton, setTextButton] = useState("Acessar")
+
+    const createAlert = () => Alert.alert(
+        "Oops!",
+        "Verifique se o campo matrícula e senha estão preenchidos."
+    );
 
     function limpaCampos() {
-        setMatricula(null)
-        setSenha(null)
+        if (matricula == null || senha == null) {
+            createAlert();
+        }else{
+            navigation.navigate("Home");
+        }
     }
 
     return (
@@ -31,6 +42,7 @@ export default function Form() {
                     value={senha}
                     placeholder="Senha"
                     keyboardType="numeric"
+                    secureTextEntry={true}
                 />
 
                 <TouchableOpacity
@@ -39,10 +51,6 @@ export default function Form() {
                 >
                     <Text style={styles.textButtonClean}>{textButton}</Text>
                 </TouchableOpacity>
-
-                {/* <Button
-                    onPress={() => limpaCampos()} 
-                    title="ENTRAR"/> */}
             </View>
         </View>
     )
