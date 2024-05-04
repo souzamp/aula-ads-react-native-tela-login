@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, TextInput, Text, TouchableOpacity, Alert } from "react-native";
+import { View, TextInput, Text, TouchableOpacity, Alert, Button } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -44,12 +44,20 @@ export default function Form() {
                     keyboardType="numeric"
                     secureTextEntry={true}
                 />
+                <Text style={styles.textEsqueceuSenha}>esqueceu sua senha?</Text>
 
                 <TouchableOpacity
                     style={styles.buttonClean}
                     onPress={() => limpaCampos()}
                 >
                     <Text style={styles.textButtonClean}>{textButton}</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.buttonCadastro}
+                    onPress={() => navigation.navigate("Cadastro")}
+                >
+                    <Text style={styles.textCadastro}>Ainda não sou cadastrado</Text>
                 </TouchableOpacity>
             </View>
         </View>
