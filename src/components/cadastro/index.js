@@ -20,7 +20,7 @@ const Cadastro = () => {
     const emailEnviadoComSucesso = () => Alert.alert(
         "Sucesso!",
         "Você recebera um e-mail para recuperação de senha!"
-    );
+    ); 
 
     const createAlert = () => Alert.alert(
         "Oops!",

@@ -1,11 +1,16 @@
-import React from "react";
-import { View, Text } from "react-native";
+import * as React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
+import PerfilScreen from '../perfil';
+import ConfiguracoesScreen from '../configuracoes';
 
-export default function Curso() {
-    return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ fontSize: 24, fontWeight: "bold"}}>Listar cursos</Text>
-        </View>
-    );
+const Drawer = createDrawerNavigator();
+
+export default function App() {
+  return (
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Perfil" component={PerfilScreen}/>
+        <Drawer.Screen name="Configurações" component={ConfiguracoesScreen} />
+      </Drawer.Navigator>
+  );
 }
